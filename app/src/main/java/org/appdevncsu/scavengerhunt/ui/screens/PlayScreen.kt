@@ -7,12 +7,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.toString
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -32,17 +30,17 @@ fun PlayScreen(
     val card = run.deck.locations.get(run.currentLocationIndex)
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Row() {
-            Text(card.name, fontSize = 40.sp, modifier = Modifier.padding(10.dp));
+            Text(card.name, fontSize = 40.sp, modifier = Modifier.padding(10.dp))
         }
         Row() {
             R.drawable.sample_holladay_hall
-            Image(painter = painterResource(id = R.drawable.sample_holladay_hall), "", modifier = Modifier.padding(20.dp));
+            Image(painter = painterResource(id = R.drawable.sample_holladay_hall), "", modifier = Modifier.padding(20.dp))
         }
         Row() {
-            Text(card.description);
+            Text(card.description)
         }
         Row() {
-            Text(getTimeString(run.totalElapsedMillis), fontSize = 20.sp, fontFamily = FontFamily.Monospace);
+            Text(getTimeString(run.totalElapsedMillis), fontSize = 20.sp, fontFamily = FontFamily.Monospace)
         }
         Row() {
             Button(onEnd) { Text("End") }
