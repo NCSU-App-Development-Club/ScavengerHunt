@@ -40,7 +40,7 @@ fun ScavengerHuntNavHost(
             val route = backStackEntry.toRoute<Play>()
             PlayScreen(
                 runId = route.runId,
-                onEnd = { },
+                onEnd = { navController.navigate(Results(route.runId)) },
                 onSkip = { },
                 onNext = { },
             )
