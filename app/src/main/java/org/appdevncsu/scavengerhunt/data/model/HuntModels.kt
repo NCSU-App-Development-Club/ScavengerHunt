@@ -1,5 +1,7 @@
 package org.appdevncsu.scavengerhunt.data.model
 
+import androidx.annotation.DrawableRes
+
 /**
  * Core domain models for the Scavenger Hunt app.
  *
@@ -33,10 +35,10 @@ data class Location(
     /** Shown under "desc." in the card editor. */
     val description: String = "",
     /**
-     * Local or remote image for the location.
+     * Drawable resource id of the location's photo.
      * `null` means no photo has been uploaded (the editor's "Remove photo" state).
      */
-    val photoUri: String? = null,
+    @DrawableRes val photoResId: Int? = null,
 )
 
 enum class RunStatus {

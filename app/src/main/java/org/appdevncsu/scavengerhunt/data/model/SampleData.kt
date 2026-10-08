@@ -1,11 +1,11 @@
 package org.appdevncsu.scavengerhunt.data.model
 
+import org.appdevncsu.scavengerhunt.R
+
 /**
  * Hard-coded sample data for building and previewing composables.
  */
 object SampleData {
-
-    private const val RES = "android.resource://org.appdevncsu.scavengerhunt/drawable/"
 
     // region Decks
 
@@ -18,31 +18,31 @@ object SampleData {
                 id = "loc-red-triangles",
                 name = "Red Triangles",
                 description = "Three red triangular sculptures in the courtyard.",
-                photoUri = RES + "sample_holladay_hall",
+                photoResId = R.drawable.sample_holladay_hall,
             ),
             Location(
                 id = "loc-hunt-library",
                 name = "Hunt Library",
                 description = "The big modern library at the end of the oval.",
-                photoUri = RES + "sample_hunt_library",
+                photoResId = R.drawable.sample_hunt_library,
             ),
             Location(
                 id = "loc-park-triangle",
                 name = "Park Triangle",
                 description = "The grassy triangle by the park entrance.",
-                photoUri = RES + "sample_umstead_trail",
+                photoResId = R.drawable.sample_umstead_trail,
             ),
             Location(
                 id = "loc-talley",
                 name = "Talley Student Union",
                 description = "Where everyone meets for lunch.",
-                photoUri = RES + "sample_talley_student_union",
+                photoResId = R.drawable.sample_talley_student_union,
             ),
             Location(
                 id = "loc-dh-hill",
                 name = "D.H. Hill Library",
                 description = "The brick library next to the Brickyard.",
-                photoUri = RES + "sample_dh_hill_library",
+                photoResId = R.drawable.sample_dh_hill_library,
             ),
         ),
         settings = DeckSettings(timerEnabled = true, imagesDisabled = false),
@@ -56,19 +56,19 @@ object SampleData {
                 id = "loc-oval",
                 name = "The Oval",
                 description = "The long lawn in the middle of campus.",
-                photoUri = RES + "sample_memorial_belltower",
+                photoResId = R.drawable.sample_memorial_belltower,
             ),
             Location(
                 id = "loc-free-expression-tunnel",
                 name = "Free Expression Tunnel",
                 description = "Painted tunnel connecting main and north campus.",
-                photoUri = RES + "sample_free_expression_tunnel",
+                photoResId = R.drawable.sample_free_expression_tunnel,
             ),
             Location(
                 id = "loc-memorial-belltower",
                 name = "Memorial Belltower",
                 description = "The belltower that glows red after big wins.",
-                photoUri = RES + "sample_memorial_belltower",
+                photoResId = R.drawable.sample_memorial_belltower,
             ),
         ),
         settings = DeckSettings(timerEnabled = false, imagesDisabled = false),
@@ -82,19 +82,19 @@ object SampleData {
                 id = "loc-loblolly-trail",
                 name = "Loblolly Trail",
                 description = "The long hiking loop through the pines.",
-                photoUri = RES + "sample_umstead_forest",
+                photoResId = R.drawable.sample_umstead_forest,
             ),
             Location(
                 id = "loc-reedy-creek-lake",
                 name = "Reedy Creek Lake",
                 description = "The lake at the south end of the park.",
-                photoUri = RES + "sample_umstead_pond",
+                photoResId = R.drawable.sample_umstead_pond,
             ),
             Location(
                 id = "loc-bridle-trails",
                 name = "Bridle Trails",
                 description = "The horse trails on the west side.",
-                photoUri = RES + "sample_umstead_trail",
+                photoResId = R.drawable.sample_umstead_trail,
             ),
         ),
         settings = DeckSettings(timerEnabled = true, imagesDisabled = true),
@@ -110,19 +110,19 @@ object SampleData {
                 name = "EB311",
                 description = "Brick building",
                 // No photo: this card is in the editor's "Remove photo" state.
-                photoUri = null,
+                photoResId = null,
             ),
             Location(
                 id = "loc-fitts-woolard",
                 name = "Fitts-Woolard Hall",
                 description = "The glass engineering building.",
-                photoUri = RES + "sample_fitts_woolard_hall",
+                photoResId = R.drawable.sample_fitts_woolard_hall,
             ),
             Location(
                 id = "loc-venture-building",
                 name = "Venture Building",
                 description = "The startup space beside the roundabout.",
-                photoUri = RES + "sample_holladay_hall",
+                photoResId = R.drawable.sample_holladay_hall,
             ),
         ),
         settings = DeckSettings(timerEnabled = true, imagesDisabled = false),
