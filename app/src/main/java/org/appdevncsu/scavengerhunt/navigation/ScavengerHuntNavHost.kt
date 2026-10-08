@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
+import org.appdevncsu.scavengerhunt.data.model.SampleData
 import org.appdevncsu.scavengerhunt.ui.screens.CardEditorScreen
 import org.appdevncsu.scavengerhunt.ui.screens.DeckDetailScreen
 import org.appdevncsu.scavengerhunt.ui.screens.DeckEditorScreen
@@ -17,7 +18,7 @@ import org.appdevncsu.scavengerhunt.ui.screens.WelcomeScreen
 fun ScavengerHuntNavHost(
     navController: NavHostController = rememberNavController(),
 ) {
-    NavHost(navController = navController, startDestination = Welcome) {
+    NavHost(navController = navController, startDestination = DeckDetail(SampleData.clubDeck.id)) {
 
         composable<Welcome> {
             WelcomeScreen(
