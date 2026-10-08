@@ -29,6 +29,10 @@ fun ResultsScreen(
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text("Great Job!!!!", fontSize = 30.sp, modifier = Modifier.padding(all = 10.dp))
         Row() {
+            val total = 0;
+            for (results in run.results) {
+                results.elapsedMillis
+            }
             Text("hours:minutes:seconds", fontSize = 20.sp, modifier = Modifier.padding(all = 10.dp))
         }
 
@@ -38,7 +42,12 @@ fun ResultsScreen(
 
                 Row(Modifier.border(.5.dp, Color.Black)) {
                     Text(results.location.name, fontSize = 12.sp, modifier = Modifier.padding(all = 3.dp))
-                    Text("" + results.elapsedMillis, fontSize = 12.sp, modifier = Modifier.padding(all = 3.dp))
+
+                    val hours = (results.elapsedMillis / 1000) / 3600
+                    val minutes = ((results.elapsedMillis / 1000) % 3600) / 60
+                    val remainingSeconds = (results.elapsedMillis / 1000) % 60
+
+                    Text("$hours:$minutes:$remainingSeconds", fontSize = 12.sp, modifier = Modifier.padding(all = 3.dp))
                 }
             }
         }
@@ -48,7 +57,6 @@ fun ResultsScreen(
             Button(onClick = onUpload) { Text("[Upload]")}
         }
     }
-
 }
 
 @Preview(showBackground = true)

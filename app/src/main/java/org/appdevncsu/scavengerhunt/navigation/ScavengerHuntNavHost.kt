@@ -50,7 +50,8 @@ fun ScavengerHuntNavHost(
             val route = backStackEntry.toRoute<Results>()
             ResultsScreen(
                 runId = route.runId,
-                onDone = { },
+                onDone = {},
+                onUpload = {},
             )
         }
 
