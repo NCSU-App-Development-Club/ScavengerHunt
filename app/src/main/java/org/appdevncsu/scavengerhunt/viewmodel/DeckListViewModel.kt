@@ -21,6 +21,15 @@ class DeckListViewModel : ViewModel () {
             previous + Deck(UUID.randomUUID().toString(), name)
         }
     }
+
+    fun editDeck(oldName: String, newName: String) {
+        _decklist.update { previous ->
+            val list = previous.toMutableList()
+            val index = previous.indexOfFirst { deck -> deck.name == oldName }
+            list[index] = list[index].copy(name = newName)
+            list
+        }
+    }
 }
 
 val decks: List<Deck> = listOf(clubDeck, friendsDeck, umsteadDeck, centennialDeck)

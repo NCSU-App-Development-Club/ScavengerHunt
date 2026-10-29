@@ -34,7 +34,10 @@ fun WelcomeScreen(
     val decks by viewModel.decklist.collectAsState()
 
     var isAddingDeck by remember { mutableStateOf(false) }
-    var currentText by remember { mutableStateOf("add") }
+    var isEditingDeck by remember { mutableStateOf(false) }
+    var currentAddText by remember { mutableStateOf("add") }
+    var currentEditText by remember { mutableStateOf("add") }
+    var currentDeck by remember { mutableStateOf("") }
 
     Column(modifier = modifier) {
         Row {
@@ -61,53 +64,78 @@ fun WelcomeScreen(
                     horizontalArrangement = Arrangement.Center
                 ) {
 
-                    Card() {
-                        Text(text = decks[index].name)
-                    }
-                }
-            }
-        }
-
-        Row {
-            Column(
-                horizontalAlignment = Alignment.Start
-            ) {
-                Card(
-                    modifier = Modifier.clickable {
-                        if (!isAddingDeck) {
-                            isAddingDeck = true
-                        } else {
-                            isAddingDeck = false
-                            viewModel.addDeck(currentText)
-                        }
-                        currentText = ""
-                    }
-                ) {
-                    Text(text = "add deck")
-                }
-
-                if (isAddingDeck) {
                     Card(
-                        modifier = Modifier.clickable { lastClicked = "add" }
+                        modifier = Modifier.clickable { lastClicked = decks[index].name }
                     ) {
-                        TextField(value = currentText, onValueChange = { newValue ->
-                            currentText = newValue
-                        })
+                            Text(text = decks[index].name)
+
+                            if (isEditingDeck) {
+                                currentDeck = lastClicked
+                            }
+                        }
                     }
                 }
             }
-            Column(
-                horizontalAlignment = Alignment.End
-            ) {
-                Card(
-                    modifier = Modifier.clickable { lastClicked = "edit" }
+
+            Row {
+                Column(
+                    horizontalAlignment = Alignment.Start
                 ) {
-                    Text(text = "edit")
+                    Card(
+                        modifier = Modifier.clickable {
+                            if (!isAddingDeck) {
+                                isAddingDeck = true
+                            } else {
+                                isAddingDeck = false
+                                viewModel.addDeck(currentAddText)
+                            }
+                            currentAddText = ""
+                        }
+                    ) {
+                        Text(text = "add deck")
+                    }
+
+                    if (isAddingDeck) {
+                        Card(
+                            modifier = Modifier.clickable { lastClicked = "add" }
+                        ) {
+                            TextField(value = currentAddText, onValueChange = { newValue ->
+                                currentAddText = newValue
+                            })
+                        }
+                    }
+                }
+                Column(
+                    horizontalAlignment = Alignment.End
+                ) {
+                    Card(
+                        modifier = Modifier.clickable {
+                            lastClicked = "edit"
+                            if (!isEditingDeck) {
+                                isEditingDeck = true
+                            } else {
+                                isEditingDeck = false
+                                viewModel.editDeck(currentDeck,currentEditText)
+                            }
+                            currentEditText = ""
+                        }
+                    ) {
+                        Text(text = "edit")
+                    }
+
+                    if (isEditingDeck) {
+                        Card(
+                            modifier = Modifier.clickable { lastClicked = "edit" }
+                        ) {
+                            TextField(value = currentEditText, onValueChange = { newValue ->
+                                currentEditText = newValue
+                            })
+                        }
+                    }
                 }
             }
         }
     }
-}
 
 @Preview(showBackground = true)
 @Composable
