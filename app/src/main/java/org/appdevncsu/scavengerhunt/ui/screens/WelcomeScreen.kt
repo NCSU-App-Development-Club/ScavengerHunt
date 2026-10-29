@@ -29,11 +29,14 @@ fun WelcomeScreen(
     viewModel: DeckListViewModel = viewModel(),
     modifier: Modifier = Modifier,
 ) {
-    var name by remember { mutableStateOf(value = "")}
-    var lastClicked by remember { mutableStateOf("")}
+    var name by remember { mutableStateOf(value = "") }
+    var lastClicked by remember { mutableStateOf("") }
     val decks by viewModel.decklist.collectAsState()
-    var currentText by remember { mutableStateOf("")}
-    Column {
+
+    var isAddingDeck by remember { mutableStateOf(false) }
+    var currentText by remember { mutableStateOf("add") }
+
+    Column(modifier = modifier) {
         Row {
             Column(
                 horizontalAlignment = Alignment.Start
@@ -70,27 +73,34 @@ fun WelcomeScreen(
                 horizontalAlignment = Alignment.Start
             ) {
                 Card(
-                    modifier = Modifier.clickable {lastClicked = "add deck"
+                    modifier = Modifier.clickable {
+                        if (!isAddingDeck) {
+                            isAddingDeck = true
+                        } else {
+                            isAddingDeck = false
+                            viewModel.addDeck(currentText)
+                        }
                         currentText = ""
                     }
                 ) {
                     Text(text = "add deck")
-
                 }
-                Card(
-                    modifier = Modifier.clickable {lastClicked = "add"}
-                ) {
-                    currentText = "add"
-                    TextField(value = currentText, onValueChange = {
-                        newValue -> currentText = newValue
-                    })
+
+                if (isAddingDeck) {
+                    Card(
+                        modifier = Modifier.clickable { lastClicked = "add" }
+                    ) {
+                        TextField(value = currentText, onValueChange = { newValue ->
+                            currentText = newValue
+                        })
+                    }
                 }
             }
             Column(
                 horizontalAlignment = Alignment.End
             ) {
                 Card(
-                    modifier = Modifier.clickable {lastClicked = "edit" }
+                    modifier = Modifier.clickable { lastClicked = "edit" }
                 ) {
                     Text(text = "edit")
                 }
