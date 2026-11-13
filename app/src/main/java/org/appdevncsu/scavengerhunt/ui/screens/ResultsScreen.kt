@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.padding
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
@@ -29,11 +30,12 @@ fun ResultsScreen(
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text("Great Job!!!!", fontSize = 30.sp, modifier = Modifier.padding(all = 10.dp))
         Row() {
-            val total = 0;
-            for (results in run.results) {
-                results.elapsedMillis
-            }
-            Text("hours:minutes:seconds", fontSize = 20.sp, modifier = Modifier.padding(all = 10.dp))
+
+            Text(
+                "hours:minutes:seconds",
+                fontSize = 20.sp,
+                modifier = Modifier.padding(all = 10.dp)
+            )
         }
 
         Column(horizontalAlignment = Alignment.Start) {
@@ -41,20 +43,28 @@ fun ResultsScreen(
             for (results in run.results) {
 
                 Row(Modifier.border(.5.dp, Color.Black)) {
-                    Text(results.location.name, fontSize = 12.sp, modifier = Modifier.padding(all = 3.dp))
+                    Text(
+                        results.location.name,
+                        fontSize = 12.sp,
+                        modifier = Modifier.padding(all = 3.dp)
+                    )
 
                     val hours = (results.elapsedMillis / 1000) / 3600
                     val minutes = ((results.elapsedMillis / 1000) % 3600) / 60
                     val remainingSeconds = (results.elapsedMillis / 1000) % 60
 
-                    Text("$hours:$minutes:$remainingSeconds", fontSize = 12.sp, modifier = Modifier.padding(all = 3.dp))
+                    Text(
+                        "$hours:$minutes:$remainingSeconds",
+                        fontSize = 12.sp,
+                        modifier = Modifier.padding(all = 3.dp)
+                    )
                 }
             }
         }
 
         Row() {
-            Button(onClick = onDone) { Text("Done")}
-            Button(onClick = onUpload) { Text("[Upload]")}
+            Button(onClick = onDone) { Text("Done") }
+            Button(onClick = onUpload) { Text("[Upload]") }
         }
     }
 }
