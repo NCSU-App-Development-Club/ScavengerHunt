@@ -1,6 +1,9 @@
 package org.appdevncsu.scavengerhunt.navigation
 
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -21,10 +24,13 @@ fun ScavengerHuntNavHost(
     NavHost(navController = navController, startDestination = DeckDetail(SampleData.clubDeck.id)) {
 
         composable<Welcome> {
-            WelcomeScreen(
-                onDeckClick = { },
-                onAddDeck = { },
-            )
+            Scaffold { innerPadding ->
+                WelcomeScreen(
+                    onDeckClick = { },
+                    onAddDeck = { },
+                    modifier = Modifier.padding(innerPadding)
+                )
+            }
         }
 
         composable<DeckDetail> { backStackEntry ->
